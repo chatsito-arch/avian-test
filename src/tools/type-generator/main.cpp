@@ -1529,7 +1529,7 @@ void writeNameInitialization(Output* out, Class* cl)
 
 void writeNameInitializations(Output* out, Module& module)
 {
-  for (const auto p : module.classes) {
+  for (const auto& p : module.classes) {
     Class* cl = p.second;
     if (!cl->javaName.size()) {
       writeNameInitialization(out, cl);
@@ -1569,7 +1569,7 @@ void writeMaps(Output* out, Module& module)
   out->write(module.classes.size());
   out->write("] = {\n");
   bool wrote = false;
-  for (const auto p : module.classes) {
+  for (const auto& p : module.classes) {
     Class* cl = p.second;
     if (wrote) {
       out->write(",\n");
