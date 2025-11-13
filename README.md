@@ -53,6 +53,7 @@ Avian can currently target the following platforms:
   * Mac OS X (i386 and x86_64)
   * Apple iOS (i386, x86_64, ARM, and ARM64)
   * FreeBSD (i386, x86_64)
+  * Experimental PlayStation Vita interpreter builds (see `ports/psvita`)
 
 
 Building

@@ -9,6 +9,9 @@ get-java-version = $(shell "$1" -version 2>&1 \
 					-e 's/.*version "9.*/9/')
 
 java-version := $(call get-java-version,$(JAVA_HOME)/bin/java)
+ifeq ($(java-version),)
+java-version := $(call get-java-version,java)
+endif
 
 build-arch := $(shell uname -m \
 	| sed 's/^i.86$$/i386/' \
