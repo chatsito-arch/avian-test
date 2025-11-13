@@ -113,6 +113,7 @@ jar cf hello.jar Hello.class
 Drop the generated `hello.jar` into your VPK under `app0:` and reference it
 from the example program above.
 
+
 ## 5. Debugging tips
 
 * Keep the heap size small (`-Xmx32m`) when running on real hardware.
