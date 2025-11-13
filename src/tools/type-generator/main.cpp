@@ -167,7 +167,7 @@ class Class {
       ss << "  " << f->dump() << "\n";
     }
 
-    for (const auto m : methods) {
+    for (const auto& m : methods) {
       ss << "  " << m.dump() << "\n";
     }
     ss << "}";
@@ -850,7 +850,7 @@ void layoutClass(Module& module, Class* cl)
 
 void layoutClasses(Module& module)
 {
-  for (const auto p : module.classes) {
+  for (const auto& p : module.classes) {
     Class* cl = p.second;
     layoutClass(module, cl);
   }
@@ -939,7 +939,7 @@ void writeAccessor(Output* out, Class* cl, Field* f)
 
 void writeAccessors(Output* out, Module& module)
 {
-  for (const auto p : module.classes) {
+  for (const auto& p : module.classes) {
     Class* cl = p.second;
     for (const auto f : cl->fields) {
       if (!f->polyfill) {
@@ -954,7 +954,7 @@ void writeAccessors(Output* out, Module& module)
 
 void writeSizes(Output* out, Module& module)
 {
-  for (const auto p : module.classes) {
+  for (const auto& p : module.classes) {
     Class* cl = p.second;
 
     out->write("const unsigned FixedSizeOf");
@@ -1020,7 +1020,7 @@ void writeConstructorInitializations(Output* out, Class* cl)
 
 void writeClassDeclarations(Output* out, Module& module)
 {
-  for (const auto p : module.classes) {
+  for (const auto& p : module.classes) {
     Class* cl = p.second;
 
     out->write("class Gc");
@@ -1154,7 +1154,7 @@ void writeClassAccessors(Output* out, Module& module, Class* cl)
 
 void writeClasses(Output* out, Module& module)
 {
-  for (const auto p : module.classes) {
+  for (const auto& p : module.classes) {
     Class* cl = p.second;
 
     out->write("class Gc");
@@ -1182,7 +1182,7 @@ void writeClasses(Output* out, Module& module)
 
 void writeInitializerDeclarations(Output* out, Module& module)
 {
-  for (const auto p : module.classes) {
+  for (const auto& p : module.classes) {
     Class* cl = p.second;
     out->write("void init");
     out->write(capitalize(cl->name));
@@ -1198,7 +1198,7 @@ void writeInitializerDeclarations(Output* out, Module& module)
 
 void writeConstructorDeclarations(Output* out, Module& module)
 {
-  for (const auto p : module.classes) {
+  for (const auto& p : module.classes) {
     Class* cl = p.second;
     out->write("Gc");
     out->write(capitalize(cl->name));
@@ -1214,7 +1214,7 @@ void writeConstructorDeclarations(Output* out, Module& module)
 
 void writeInitializers(Output* out, Module& module)
 {
-  for (const auto p : module.classes) {
+  for (const auto& p : module.classes) {
     Class* cl = p.second;
     out->write("void init");
     out->write(capitalize(cl->name));
@@ -1241,7 +1241,7 @@ void writeInitializers(Output* out, Module& module)
 
 void writeConstructors(Output* out, Module& module)
 {
-  for (const auto p : module.classes) {
+  for (const auto& p : module.classes) {
     Class* cl = p.second;
 
     bool hasObjectMask = cl->name == "singleton";
@@ -1316,7 +1316,7 @@ void writeConstructors(Output* out, Module& module)
 void writeEnums(Output* out, Module& module)
 {
   bool wrote = false;
-  for (const auto p : module.classes) {
+  for (const auto& p : module.classes) {
     Class* cl = p.second;
     if (wrote) {
       out->write(",\n");
@@ -1454,7 +1454,7 @@ void writeInitializations(Output* out, Module& module)
   writeInitialization(out, module, alreadyInited, module.classes["intArray"]);
   writeInitialization(out, module, alreadyInited, module.classes["class"]);
 
-  for (const auto p : module.classes) {
+  for (const auto& p : module.classes) {
     Class* cl = p.second;
     if (cl->name != "intArray" && cl->name != "class") {
       writeInitialization(out, module, alreadyInited, cl);
@@ -1503,7 +1503,7 @@ void writeJavaInitialization(Output* out,
 void writeJavaInitializations(Output* out, Module& module)
 {
   std::set<Class*> alreadyInited;
-  for (const auto p : module.classes) {
+  for (const auto& p : module.classes) {
     Class* cl = p.second;
     if (cl->javaName.size()) {
       writeJavaInitialization(out, cl, alreadyInited);
