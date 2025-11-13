@@ -113,9 +113,7 @@ jar cf hello.jar Hello.class
 Drop the generated `hello.jar` into your VPK under `app0:` and reference it
 from the example program above.
 
-For step-by-step instructions on wiring the resulting static libraries into an
-existing Vita homebrew (including CMake snippets, resource packaging and JNI
-limitations) see [`HOMEBREW.md`](./HOMEBREW.md).
+
 
 ## 5. Debugging tips
 
